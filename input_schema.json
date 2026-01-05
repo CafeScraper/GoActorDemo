@@ -1,0 +1,22 @@
+{
+  "description": "With our Instagram Reel information scraper tool, after a successful scrape, you can extract the Reel author's username, Reel caption, hashtags used in the post, number of comments on the Reel, Reel publish date, likes count, views count, play count, popular comments, unique post identifier, URL of the Reel's display image or video thumbnail, product type, Reel duration, video URL, post audio link, number of posts on the profile, number of followers on the profile, profile URL, whether the account is a paid partner, and other relevant information. Currently, the tool can scrape via Instagram username, URL, and other methods, and the scrape results can be downloaded in various structured formats.",
+  "b": "url",
+  "properties": [
+    {
+      "title": "URL",
+      "name": "url",
+      "type": "array",
+      "editor": "requestList",
+      "description": "This parameter is used to specify the Instagram access URL to be fetched.",
+      "default": [
+        {
+          "url": "https://www.instagram.com/reel/C5Rdyj_q7YN/"
+        },
+        {
+          "url": "https://www.instagram.com/reel/C85BZjeSHuO"
+        }
+      ],
+      "required": true
+    }
+  ]
+}

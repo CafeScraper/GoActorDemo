@@ -1,0 +1,6 @@
+.idea/
+builds/
+/config
+*.log
+*.logs
+*.exe
