@@ -168,7 +168,7 @@ for _, datum := range resultData {
 
 **Important Notes:**
 
-1. Setting headers and pushing data can be done in any order
+1. Set table headers before pushing data
 2. Keys in the data must match the table header keys exactly
 3. Data must be pushed row by row, not all at once
 4. Logging after each push is recommended for monitoring progress
@@ -288,7 +288,29 @@ func run() {
     coresdk.Log.Info(ctx, fmt.Sprintf("Current IP: %s", ip))
     coresdk.Log.Info(ctx, "Business logic completed")
 
-    // 5. Push result data
+    // 5. Set table header
+    headers := []*coresdk.TableHeaderItem{
+        {
+            Label:  "Title",
+            Key:    "title",
+            Format: "text",
+        },
+        {
+            Label:  "Content",
+            Key:    "content",
+            Format: "text",
+        },
+    }
+
+    res, err := coresdk.Result.SetTableHeader(ctx, headers)
+    if err != nil {
+        coresdk.Log.Error(ctx, fmt.Sprintf("Set table header failed: %v", err))
+        return
+    }
+    fmt.Printf("SetTableHeader Response: %+v\n", res)
+
+
+    // 6. Push result data
     type result struct {
         Title   string `json:"title"`
         Content string `json:"content"`
@@ -309,27 +331,6 @@ func run() {
         }
         fmt.Printf("PushData Response: %+v\n", res)
     }
-
-    // 6. Set table header
-    headers := []*coresdk.TableHeaderItem{
-        {
-            Label:  "Title",
-            Key:    "title",
-            Format: "text",
-        },
-        {
-            Label:  "Content",
-            Key:    "content",
-            Format: "text",
-        },
-    }
-
-    res, err := coresdk.Result.SetTableHeader(ctx, headers)
-    if err != nil {
-        coresdk.Log.Error(ctx, fmt.Sprintf("Set table header failed: %v", err))
-        return
-    }
-    fmt.Printf("SetTableHeader Response: %+v\n", res)
 
     coresdk.Log.Info(ctx, "Script execution completed")
 }
