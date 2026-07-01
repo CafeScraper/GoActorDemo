@@ -1,4 +1,4 @@
-[English](https://docs.coreclaw.com/go-actor) | [中文](https://docs.coreclaw.com/cn/actor/actor/go-actor)
+
 
 
 ### Required Files (Located in Project Root)
